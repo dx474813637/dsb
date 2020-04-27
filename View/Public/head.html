@@ -1,0 +1,161 @@
+<link href="__PJ__/home/css/100ec-head.css" rel="stylesheet">
+
+
+
+<div class="head_logo clearfix">
+	<div class="main">
+
+    	<div class="logo_nav clearfix">
+        	<div class="search">
+        		<a href="http://www.100ec.cn/" class="logo"><img src="http://www.100ec.cn/Public/home/images/wjsLOGO.png"></a>
+                <form id="s_form" class="clearfix" name="s_form" action="{$webhost}/search.html" method="post" target="_blank">
+                    <input type="text" name="terms" id="terms" value="请输入关键词" onFocus="if(this.value=='请输入关键词'){this.value='';this.style.color='#333'}"onblur="if(this.value==''){this.value='请输入关键词';this.style.color='#ccc'}">
+                    <span style="cursor:pointer;" onclick="searchkey();"></span>
+                </form>
+            </div>
+            <div class="banner"><a href="{$toplogo.url}" target="_blank"><img src="{$toplogo.pic}" width="100%" height="100%"></a></div>
+        </div>
+    </div>
+</div>
+
+<div class="nav-bg">
+<ul class="nav">
+	
+	<div class="line"></div>
+	
+	<li style="width:440px;">
+	<h1>电子商务资讯中心</h1>
+	<div class="nav-box">
+	<volist name="memu" id="v" offset="0" length='4'>
+    <ul class="nav-a">
+    <h2 class="navi_title">{$v.title}</h2>
+        <li>
+            <volist name="v.zi" id="vv">
+            <p><a href="{$vv.url}" target="_blank">{$vv.name}</a></p>
+            </volist>
+        </li>
+    </ul>
+    </volist>            
+	</div>
+	</li>
+	
+	<div class="line"></div>
+	
+	<li style="width:330px">
+	<h1>电子商务研究中心</h1>
+	<div class="nav-box">
+	<volist name="memu" id="v" offset="4" length='3'>
+    <ul class="nav-a">
+    <h2 class="navi_title">{$v.title}</h2>
+        <li>
+            <volist name="v.zi" id="vv">
+            <p><a href="{$vv.url}" target="_blank">{$vv.name}</a></p>
+            </volist>
+        </li>
+    </ul>
+    </volist>
+	</div>
+	</li>
+	
+	<div class="line"></div>
+	
+	<li>
+	<h1>电子商务服务中心</h1>
+	<div class="nav-box">
+	<volist name="memu" id="v" offset="7" length='2'>
+    <ul class="nav-a">
+    <h2 class="navi_title">{$v.title}</h2>
+        <li>
+            <volist name="v.zi" id="vv">
+            <p><a href="{$vv.url}" target="_blank">{$vv.name}</a></p>
+            </volist>
+        </li>
+    </ul>
+    </volist>
+	</div>
+	</li>
+	
+	<div class="line"></div>
+	
+	<li style="width:110px;">
+	<h1>更多</h1>
+	<div class="nav-box" style="top:0;">
+	<volist name="memu" id="v" offset="9" length='1'>
+    <ul class="nav-a">
+    <h2 class="navi_title">{$v.title}</h2>
+        <li>
+            <volist name="v.zi" id="vv">
+            <p><a href="{$vv.url}" target="_blank">{$vv.name}</a></p>
+            </volist>
+        </li>
+    </ul>
+    </volist>
+	</div>
+	</li>
+	
+	<div class="line"></div>
+
+</ul>
+
+
+
+<!--移动端导航-->
+<ul class="yd-nav">
+	<li>电子商务资讯中心
+	<ul class="yd-content">
+		<volist name="memu" id="v" offset="0" length='4'>
+		<li>
+			<p class="yd-title"><a style="color:#fff;">{$v.title}</a></p>
+			<volist name="v.zi" id="vv">
+            <p><a href="{$vv.url}" target="_blank">{$vv.name}</a></p>
+            </volist>
+		</li>
+		</volist>
+	</ul>
+	</li>
+	
+	<li>电子商务研究中心
+	<ul class="yd-content">
+		<volist name="memu" id="v" offset="4" length='3'>
+		<li>
+			<p class="yd-title"><a style="color:#fff;">{$v.title}</a></p>
+			<volist name="v.zi" id="vv">
+            <p><a href="{$vv.url}" target="_blank">{$vv.name}</a></p>
+            </volist>
+		</li>
+		</volist>
+	</ul>
+	</li>
+	
+	<li>电子商务服务中心
+	<ul class="yd-content">
+		<volist name="memu" id="v" offset="7" length='2'>
+		<li>
+			<p class="yd-title"><a style="color:#fff;">{$v.title}</a></p>
+			<volist name="v.zi" id="vv">
+            <p><a href="{$vv.url}" target="_blank">{$vv.name}</a></p>
+            </volist>
+		</li>
+		</volist>
+	</ul>
+	</li>
+</ul>
+</div>
+
+<script>
+function searchkey(){
+    var form1 = document.getElementById('s_form');
+    form1.submit(); 
+}
+    
+$(function(){
+    $(".yd-nav li").click(function(){
+        $(".yd-nav li .yd-content").removerClass("jlt_active")
+        $(this).addClass("jlt_active")
+    })
+})
+
+
+</script>
+
+<!-- <script src="__PJ__/home/js/100ec_jlt.js?v=1.0.7"></script> -->

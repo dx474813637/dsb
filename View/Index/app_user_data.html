@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>APP用户数据分析 互联网产品数据库 </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<link href="__PJ__/home/css/appData.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+</head>
+<body>
+	
+<div class="dsb-header">
+    <include file="Public/head-nav"/>
+</div>
+<include file="Public/dsb-left-nav"/>
+	
+
+<div class="dsj-wrapper">
+	<div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">App详细数据</span></p></div>
+            <div class="sjk-change-status-box" id="screenshotBtn">
+                <div class="sjk-change-status-in-box">
+                    <div class="sjk-change-status-circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<include file="Public/apprankhead"/>
+	<div class="sjk-wrapper">
+		<div class="app-table">
+
+
+			<ul class="app-table-title sjk-bg4">
+				<li class="app-table-title-item active" data-key="age">使用人群年龄占比</li>
+				<li class="app-table-title-item" data-key="equit">使用人群设备占比</li>
+				<li class="app-table-title-item" data-key="gender">使用人群性别占比</li>
+				<li class="app-table-title-item" data-key="income">使用人群收入占比</li>
+			</ul>
+			<div class="app-table-echarts">
+				<div class="refresh-div"><img src="http://www.100ec.cn/Public/home/images/icon-loading.png"/></div>
+				<div id="echarts"></div>
+				<!-- <div class="sy-logo app-rank"></div> -->
+				<div class="screenshot-compare-ECharts-title app-rank" id="screenName2" style="top: 0;">
+					<p>对比图</p>
+				</div>
+				<div class="screenshot-compare-ECharts-footer clearfix" style="bottom: 40px;">
+					
+					<p>图表编制：网经社</p>
+					<p>网址：WWW.100EC.CN</p>
+				</div>
+			</div>
+			<div class="table-type">
+				<div class="table-type-item table-type-pie active" data-type="pie" title="饼图" id="pie"></div>
+				<div class="table-type-item table-type-bar" data-type="bar"  title="柱状图" id="bar"></div>
+			</div>
+		</div>
+
+
+		<div class="sjk-form bz-form" style="color: #ccc">
+			<p>1、网经社旨在通过互联网产品数据库向用户提供有关产品活跃热度等信息，包含但不限于用户数据、排名数据、近期数据、热值数据等，以此仅为用户进行相关信息的一般性指导。</p>
+			<p>2、本互联网产品数据库所有数据均来源于“艾媒北极星”。网经社会尽力确保本数据库获得的信息来源可靠，但不承诺或保证信息的准确性、完整性或真实性，不对任何信息出现差错或遗漏以及因使用该信息导致的后果承担任何法律责任。用户在参考来自本数据库的信息后，应自行通过其他渠道确认信息的真实性及有效性。</p>
+			<p>3、网经社会尽力确保本数据库站所有信息的全面性和及时性，但本数据库对所提供信息及数据的片面或迟延不承担任何责任。</p>
+			<p>4、用户在使用本数据库时，必须遵守适用的法律法规，对于用户违法使用本数据库而引起的一切责任，由用户自行承担。</p>
+			<p>5、本数据库所包含的所有内容（包括但不限于：文本、图形、图片、内容分类等）的所有权归网经社所有。</p>
+			<p>6、为确保图表工具的正常显示以及使用，请使用除IE以外的主流浏览器（如：Firefox、Google Chrome、Safari、Opera等浏览器）。</p>
+			<p>以上声明内容的修改权、更新权及最终解释权均属网经社（100EC.CN）所有。 </p>
+		</div>
+
+		<include file="Public/sjklogobox"/>
+	</div>
+
+	<include file="Public/footer"/>
+</div>
+
+
+	<script src="__PJ__/home/js/echarts.min.js"></script>
+	<script src="__PJ__/home/js/sjk/dataCgy_appRank.js"></script>
+	<script src="__PJ__/home/js/AppData/appNav.js"></script>
+	<script src="__PJ__/home/js/AppData/userDataEcharts.js"></script>
+	<script src="__PJ__/home/js/AppData/userData.js"></script>
+
+</body>
+</html>

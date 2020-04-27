@@ -1,0 +1,154 @@
+
+<link href="__PJ__/home/css/dsj-tools.css" rel="stylesheet">
+<link href="__PJ__/home/css/spectrum.css" rel="stylesheet">
+<div class="tools">
+	<div class="tools-item"><p class="setting tools-icon tools-icon-title" data-type="title" title="标题设置"></p></div>
+	<div class="tools-item"><p class="setting tools-icon tools-icon-font" data-type="font" title="字体设置"></p></div>
+	<div class="tools-item"><p class="setting tools-icon tools-icon-color" data-type="color" title="颜色设置"></p></div>
+	<div class="tools-item"><p class="setting tools-icon tools-icon-sy" data-type="bgImg" title="水印设置"></p></div>
+	<div class="tools-item"><p class="tools-icon tools-icon-download" id="download" title="图片下载"></p></div>
+	<div class="tools-item"><p class="tools-icon tools-icon-init" id="init" title="设置初始化"></p></div>
+</div>
+<div class="tools-wrap">
+	<div class="mask"></div>
+
+	<div class="tools-box title-type" data-type="title">
+		<div class="tools-box-header">
+			<p>标题设置</p>
+			<span class="tools-close-btn" title="关闭"></span>
+		</div>
+		<div class="tools-box-main ">
+			<div class="t-b-m-item">
+				<div class="item-group">
+					<span>标题内容</span>
+					<input type="text" name="title" id="title" autocomplete="off" />
+				</div>
+				<div class="item-group">
+					<p class="beizhu">建议标题内容30个汉字内,留空代表不修改</p>
+				</div>
+				
+			</div>
+
+		</div>
+		<div class="tools-box-footer">
+			<div class="submit">确认</div>
+		</div>
+	</div>
+
+	<div class="tools-box font-type" data-type="font">
+		<div class="tools-box-header">
+			<p>字体设置</p>
+			<span class="tools-close-btn" title="关闭"></span>
+		</div>
+		<div class="tools-box-main">
+			<div class="t-b-m-item">
+
+				<div class="item-group" data-type="titleSize">
+					<span>文字大小</span>
+					<label class="radio-inline">
+						<input type="radio"  name="titleSize" class="check-box-old" value="12">
+						<span class="check-box-beauty"></span>
+						极小
+					</label>
+					<label class="radio-inline">
+						<input type="radio"  name="titleSize" class="check-box-old" value="14">
+						<span class="check-box-beauty"></span>
+						小
+					</label>
+					<label class="radio-inline">
+						<input type="radio"  name="titleSize" class="check-box-old" value="16">
+						<span class="check-box-beauty"></span>
+						中
+					</label>
+					<label class="radio-inline">
+						<input type="radio"  name="titleSize" class="check-box-old" value="18">
+						<span class="check-box-beauty"></span>
+						大
+					</label>
+					<label class="radio-inline">
+						<input type="radio"  name="titleSize" class="check-box-old" value="20">
+						<span class="check-box-beauty"></span>
+						极大
+					</label>
+				</div>
+
+				
+			</div>
+
+		</div>
+		<div class="tools-box-footer">
+			<div class="submit">确认</div>
+		</div>
+	</div>
+
+	<div class="tools-box color-type" data-type="color">
+		<div class="tools-box-header">
+			<p>颜色设置</p>
+			<span class="tools-close-btn" title="关闭"></span>
+		</div>
+		<div class="tools-box-main ">
+			<div class="t-b-m-item">
+				<div class="item-group">
+					<span>主题色</span>
+					<input type="text" name="color" id="full" autocomplete="off" />
+				</div>
+				
+			</div>
+
+		</div>
+		<div class="tools-box-footer">
+			<div class="submit">确认</div>
+		</div>
+	</div>
+	<div class="tools-box bgImg-type" data-type="bgImg">
+		<div class="tools-box-header">
+			<p>水印设置</p>
+			<span class="tools-close-btn" title="关闭"></span>
+		</div>
+		<div class="tools-box-main ">
+			<div class="t-b-m-item">
+				<div class="item-group">
+					<span>水印WebUrl</span>
+					<input type="text" name="bgImg" id="bgImg" autocomplete="off" />
+				</div>
+				<div class="item-group">
+					<p class="beizhu">如：http://www.100ec.cn/Public/home/images/dsb-logo.png</p>
+				</div>
+				<div class="item-group">
+					<span></span>
+					<label class="radio-inline" style="width: 80px">
+						<input type="checkbox"  name="isBgImg" class="check-box-old" >
+						<span class="check-box-beauty"></span>
+						无水印
+					</label>
+				</div>
+				
+			</div>
+
+		</div>
+		<div class="tools-box-footer">
+			<div class="submit">确认</div>
+		</div>
+	</div>
+</div>
+<div class="preview-wrap">
+	<div class="mask"></div>
+	<div class="preview-box">
+		<div class="preview-box-header">
+			<p class="preview-box-header-p">图表预览</p>
+			<p>浏览器种类、版本过低、设备卡顿等兼容性问题均有可能造成预览图片失真、偏移等问题，如问题未解决建议您使用谷歌、火狐浏览器的可滚动截屏功能或者其他截屏软件</p>
+			<span class="preview-close-btn"></span>
+		</div>
+		<div class="preview-box-main" id="preview">
+		</div>
+		<div class="preview-box-footer">
+			<p>图片过大无法通过点击下载，建议右键图表“复制图片”或者“图片另存为”功能来保存图片</p>
+			<a id="down">下载</a>
+		</div>
+	</div>
+</div>
+<!-- 拾色器 -->
+<script src="__PJ__/home/js/spectrum.js"></script>
+<script src="__PJ__/home/js/docs.js"></script>
+<script src="__PJ__/home/js/html2canvas.js"></script>
+<script src="__PJ__/home/js/sjk/dsjtools.js"></script>

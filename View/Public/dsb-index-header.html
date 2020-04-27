@@ -1,0 +1,36 @@
+<link href="__PJ__/home/css/100ec-head-nav1.css" rel="stylesheet">
+<link href="__PJ__/home/css/dsb-header.css" rel="stylesheet">
+<!--top-->
+<div id="Rtop"></div>
+
+<div class="dsb-header">
+	<div class="dsb-header-logo">
+		<a href="http://www.100ec.cn/Index/dsb_product.html" target="_blank">
+			<img src="http://www.100ec.cn/Public/home/images/dsb-logo.png" alt="">
+		</a>
+	</div>
+
+	<div class="dsb-header-ul">
+
+        <empty name="Think.session.homename">
+			<li class="dsb-header-ul-item">
+				<p><a href="/Index/dsb-reg.html" target="_blank">注册</a></p>
+			</li>
+			<li class="dsb-header-ul-item">
+				<p><a href="/Index/dsb-login.html" target="_blank">登录</a></p>
+			</li>
+		</empty>
+		
+		<notempty name="Think.session.homename">
+			<li class="dsb-header-ul-item">
+				<p class="user-info-label"><a href="/User/member.html" target="_blank">{$Think.session.homename}</a></p>
+			</li>
+		</notempty>
+	</div>
+</div>
+
+<div class="returntop" id="return">
+    <a href="#Rtop"><img src="http://www.100ec.cn/Public/home/images/return.png" width="100%"></a>
+</div>
+
+<script src="__PJ__/home/js/dsb-header.js"></script>

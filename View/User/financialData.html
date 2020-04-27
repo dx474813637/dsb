@@ -1,0 +1,266 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电商上市公司核心财报数据库 </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="网经社电商上市公司核心财报数据库收录B2C、B2B、O2O、跨境电商四类电商上市公司。用户可以使用折线图或者柱状图来更加方便地查看每家电商上市公司的营收及营收同比增长率、毛利润及毛利润同比增长率、净利润及净利润同比增长率、GMV及GMV同比增长率、活跃用户数及活跃用户数同比增长率、现金流及现金流同比增长率等数据，数据来源均为各上市公司公开披露的财报。此外，数据库提供数据在线可视化对比功能，更直观的展现出数据对比的差异。">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+</head>
+<body >
+
+<if condition="$vip eq 1 ">
+	<include file="Public/dsb-warn"/>
+</if>
+
+<div class="jiucuo-box" id="jiucuo2">
+	<p>我要纠错</p>
+</div>
+
+<div class="jiucuo-model-box" id="jiucuo-model-box">
+	
+</div>
+<div class="data-vs-wrapper">
+	<div class="data-vs-main">
+		<div class="data-vs-title">
+			核心数据对比
+			<span class="close icon icon9"></span>
+		</div>
+		<div class="tiaojian">
+			<div class="choose">
+				<div class="choose-t">对比数据：</div>
+				<div class="select-item select-key">
+					<span data-key="">选择字段</span>
+					<ul>
+						<li data-key="a100">营收</li>
+						<li data-key="a102">毛利润</li>
+						<li data-key="a104">净利润</li>
+						<li data-key="a106">总资产</li>
+						<li data-key="a108">净资产</li>
+						<li data-key="a112">GMV</li>
+						<li data-key="a117">活跃用户数</li>
+						<li data-key="a119">现金流</li>
+						<li data-key="a125">流动资产</li>
+						<li data-key="a126">流动负债</li>
+						<li data-key="a127">总负债</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="choose">
+				<div class="choose-t">添加公司：</div>
+				<div class="select-item select-category">
+					<span>选择分类</span>
+					<ul>
+						<li data-category="B2C">零售电商</li>
+						<li data-category="B2B">产业电商</li>
+						<li data-category="O2O">生活服务电商</li>
+						<li data-category="kj">跨境电商</li>
+					</ul>
+				</div>
+				<div class="select-item select-company">
+					<span>选择公司</span>
+					<ul>
+					</ul>
+				</div>
+			</div>
+		</div>
+			<div class="choose chosen">
+				<div class="choose-t">已选公司：</div>
+			</div>
+			
+
+		<div class="show-pic-btn">
+			<div>生成数据对比图表</div>
+			<!-- <p>数据对比的时间横坐标以首选公司披露的财报时间为基值，与后添加的公司数据生成对比图。多家公司数据对比时可能会造成页面卡顿</p> -->
+		</div>
+		<div class="tu2">
+			<img src="https://www.100ec.cn/Public/home/images/sy2.png" alt="" class="shuiyin" style="top: 40%">
+			<div class="data-pic" id="chart2"></div>
+		</div>
+		<div class="ps">
+			<p style="font-weight: bold;">对比工具使用说明：</p>
+			<p>1、生成对比图需要选择对比数据的字段以及公司，支持多家公司数据对比。</p>
+			<p>2、如未生成对比图并且显示“无数据对比”提示框，则首选公司在该字段下暂无数据。</p>
+			<p>3、对比图最右侧一列为工具栏：</p>
+			<p class="s">（1）“切换为折线图”点击后对比图数据将以折线图呈现；</p>
+			<p class="s">（2）“切换为柱状图”点击后对比图数据将以柱状图呈现；</p>
+			<p class="s">（3）“还原”点击后全部还原初始对比图状态。</p>
+			<p>4、右上角图例组件展现了不同系列的标记，颜色和名字。可以通过点击图例控制哪些系列不显示。</p>
+			<p>5、底部组件用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。。</p>
+		</div>
+	</div>
+</div>
+
+
+
+<include file="Public/dsb-header"/>
+<include file="Public/dsb-left-nav"/>
+<!-- 
+<div class="financial-head">
+	<div class="sjk-head-logo">
+		<div class="sjk-wrapper">
+			<a href="http://www.100ec.cn/" target="_blank"><img src="http://www.100ec.cn/Public/home/images/wjsLOGO.png" alt=""></a>
+			<div class="sjk-change-status-box" id="screenshotBtn">
+				<div class="sjk-change-status-in-box">
+					<div class="sjk-change-status-circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<img src="__PJ__/home/images/sjk1.jpg" alt="" width="100%">
+</div> -->
+
+<div class="dsj-wrapper">
+	<div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">电商上市公司财报数据库</span></p></div>
+            
+			<if condition="$vip eq 0 ">
+				<div class="sjk-change-status-box" onclick="alert('您无权使用“数据图表化”功能，需开通VIP')">
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+			</if>
+			<if condition="$vip eq 2 ">
+	            <div class="sjk-change-status-box" id="screenshotBtn">
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+	        </if>
+        </div>
+		<if condition="$vip eq 2 ">
+	        <!-- 电数宝工具组件 -->
+	    	<include file="Public/dsb-tools"/>
+	    </if>
+    </div>
+	<div class="financial-choose">
+		<div class="financial-wrapper choose-box">
+			<div class="category">
+				<div class="category-item" data-category="B2C">零售电商</div>
+				<div class="category-item" data-category="B2B">产业电商</div>
+				<div class="category-item" data-category="O2O">生活服务电商</div>
+				<div class="category-item" data-category="kj">跨境电商</div>
+			</div>
+			<ul class="cpy">
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="financial-wrapper">
+		<div class="cpy-info">
+			<div class="cpy-name">&nbsp;</div>
+			<div class="cpy-stock">&nbsp;</div>
+
+			<if condition="$vip eq 0 ">
+				<div class="data-vs">
+					<p>请开通VIP权限即可进行数据对比</p>
+				</div>
+			</if>
+			<if condition="$vip eq 2 ">
+				<div class="data-vs">
+					<p id="dataVs">数据对比</p>
+				</div>
+			</if>
+		</div>
+		<div class="financial-form">
+			<!-- <div class="financial-title">数据图表</div> -->
+			<div class="financial-category">
+				<span>数据分类</span>
+				<ul class="category-more">
+					<li class="data" data-num="a100" data-num2="a101">营收及同比增长率</li>
+					<li class="data" data-num="a102" data-num2="a103">毛利润及同比增长率</li>
+					<li class="data" data-num="a104" data-num2="a105">净利润及同比增长率</li>
+					<li class="data" data-num="a106" data-num2="a107">总资产及同比增长率</li>
+					<li class="data" data-num="a108" data-num2="a109">净资产及同比增长率</li>
+					<li class="data" data-num="a110">付费会员</li>
+					<li class="data" data-num="a112" data-num2="a113">GMV及同比增长率</li>
+					<li class="data" data-num="a148" data-num2="a149">财年GMV及同比增长率</li>
+					<li class="data" data-num="a117" data-num2="a118">活跃用户数及同比增长率</li>
+					<li class="data" data-num="a119" data-num2="a120">现金流及同比增长率</li>
+					<li class="data" data-num="a122">月活跃用户</li>
+					<li class="data" data-num="a123">订单量</li>
+					<li class="data" data-num="a125">流动资产</li>
+					<li class="data" data-num="a126">流动负债</li>
+					<li class="data" data-num="a127">总负债</li>
+					<li class="data" data-num="a132">现金流量净额</li>
+					<li class="data" data-num="a133">自由现金流</li>
+					<li class="data" data-num="a134">归母净利率</li>
+					<li class="data" data-num="a135">毛利率</li>
+					<li class="data" data-num="a136">ARPU(每用户平均收入)</li>
+					<li class="data" data-num="a137">研发费用</li>
+					<li class="data" data-num="a138">研发费用占收入百分比</li>
+					<li class="data" data-num="a139">美团外卖变现率</li>
+					<li class="data" data-num="a140">活跃买家数</li>
+					<li class="data" data-num="a141" data-num="a142">广告收入及同比增长率</li>
+					<li class="data" data-num="a143">双11订单量峰值</li>
+					<li class="data" data-num="a144">总经营费用</li>
+					<li class="data" data-num="a145">经营费用率</li>
+					<li class="data" data-num="a146">客单价</li>
+					<li class="data" data-num="a147">活跃用户人均GMV</li>
+				</ul>
+			</div>
+			<div class="tu">
+				<div class="screenshot-industry-title" id="screenIndustry">
+					<p></p>
+				</div>
+
+				<div class="screenshot-industry-footer">
+					<p>图表编制：网经社</p>
+					<p>数据来源：WWW.100EC.CN</p>
+				</div>
+				<div class="sjk-chart" id="chart">
+				</div>
+				<!-- <div class="sy-logo"></div> -->
+			</div>
+			<div class="financial-title">核心数据表</div>
+			<div class="financial-main">
+				<div class="form-list label">
+					<!-- <div class="form-label"></div>-->
+				</div>
+				<div class="form-window">
+					<div class="form-data">
+						<!-- <div class="form-list">
+							<div class="form-label">2019年Q2</div>
+						</div> -->
+					</div>
+				</div>
+				
+			</div>
+
+
+			<div class="financial-title">招股书全文</div>
+			<div class="financial-main" id="zgs">
+			</div>
+			<div class="financial-title">财报全文</div>
+			<div class="financial-main" id="cb">
+			</div>
+		</div>
+
+		<div class="financial-form bz-form" style="color: #ccc">
+			<p>1、数据来源均为各上市公司公开披露的财报，如有错误，请点击“<span id="jiucuo1">我要纠错</span>”在线递交错误信息。</p>
+			<p>2、为确保图表工具的正常显示以及使用，请使用除IE以外的主流浏览器（如：Firefox、Google Chrome、Safari、Opera等浏览器）</p>
+		</div>
+
+		<!-- <include file="Public/sjklogobox"/> -->
+
+	</div>
+
+	<include file="Public/footer"/>
+</div>
+
+<script src="__PJ__/home/js/echarts.min.js"></script>
+<script src="__PJ__/home/js/sjk/dataCgy_financial.js?v=1.2"></script>
+<script src="__PJ__/home/js/data-vs.js"></script>
+<script src="__PJ__/home/js/sjk/findError.js"></script>
+<script src="__PJ__/home/js/sjk/showEcharts_fin.js"></script>
+<script src="__PJ__/home/js/sjk/financialSjk.js"></script>
+</body>
+</html>

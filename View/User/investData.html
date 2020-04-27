@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电商投融资数据库 </title>
+	<meta name="keywords" content="零售电商 B2B电商 跨境电商 生活服务电商 物流科技 医药电商 汽车电商 农村电商 母婴电商 生鲜电商 二手电商 社区电商 天使轮 种子轮 首轮 A轮 B轮 C轮 D轮 E轮 F轮 IPO上市后 战略投资 投资 融资 数据 电商 融资方 投资方">
+	<meta name="description" content="“电子商务投融资数据库”以公司公开披露融资信息为数据源，根据的行业定义整理而成。形成了零售电商、B2B电商、跨境电商、生活服务电商、物流科技、在线教育等板块，通过数据图表的形式全方位展示电商行业的投融资状况。
+">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/cityPlugin.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+</head>
+<body>
+
+<if condition="$vip eq 1 ">
+	<include file="Public/dsb-warn"/>
+</if>
+
+<include file="Public/dsb-header"/>
+<include file="Public/dsb-left-nav"/>
+
+<div class="unicorn-compare-box" id="compareBox">
+	<div class="mask"></div>
+	<div class="box-wrap">
+		<div class="box-wrap-head">
+			<p class="box-wrap-head-title">融资事件数据对比</p>
+			<p class="box-wrap-close"></p>
+		</div>
+		<div class="dropdown-box">
+			<div class="dropdown">
+				<p>数据字段</p>
+				<ul id="dropUl">
+					<li data-type="count" data-x="shares">融资轮次数据</li>
+					<!-- <li data-type="" data-y="money" data-x="a103">融资金额区间统计</li> -->
+					<li data-type="" data-y="money" data-x="cate">融资总金额领域</li>
+					<li data-type="" data-y="money" data-x="a103">融资总金额行业</li>
+					<li data-type="" data-y="money" data-x="a105">融资总金额月份</li>
+					<li data-type="" data-y="money" data-x="a104">融资总金额年份</li>
+					<li data-type="" data-y="money" data-x="a106">融资总金额省份</li>
+					<li data-type="" data-y="money" data-x="a107">融资总金额城市</li>
+					<li data-type="count" data-x="cate">融资事件领域</li>
+					<li data-type="count" data-x="a103">融资事件行业</li>
+					<li data-type="count" data-x="a105">融资事件月份</li>
+					<li data-type="count" data-x="a105">融资事件季度</li>
+					<li data-type="count" data-x="a104">融资事件年份</li>
+					<li data-type="count" data-x="a106">融资事件省份</li>
+					<li data-type="count" data-x="a107">融资事件城市</li>
+				</ul>
+			</div>
+			<div class="dropdown">
+				<p>图表类型切换</p>
+				<ul id="typeUl">
+					<li data-type="bar">柱状图</li>
+					<li data-type="line">折线图</li>
+					<li data-type="pie">饼图</li>
+				</ul>
+			</div>
+		</div>
+		<div class="screenshot-compare-ECharts-title" id="screenName2">
+			<p>电商投融资对比图</p>
+		</div>
+		<div class="w">
+			<div id="showBox"></div>
+			<div class="sy-logo invest"></div>
+		</div>
+		
+
+		<div class="screenshot-compare-ECharts-footer clearfix">
+			
+			<p>图表编制：</p>
+			<p>数据来源：WWW.100EC.CN</p>
+		</div>
+	</div>
+</div>
+<div class="sjk-wrapper unicorn-vs" id="unicorn-vs">
+	<div class="u-v-title">
+		<p>数据添加<strong id="cpyNum"></strong></p>
+		<p>
+			<span id="removeDataBtn">清空数据</span>
+			<if condition="$vip eq 2 ">
+				<span id="showEChartsBtn">生成对比图</span>
+			</if>
+			<if condition="$vip eq 0 ">
+				<span>请开通VIP权限即可生成自选对比图</span>
+			</if>
+			<span id="hideBtn" class="active">收起</span>
+		</p>
+	</div>
+	<div class="u-v-content">
+		<ul class="u-v-c-list" id="u-v-c-list">
+		</ul>
+	</div>
+</div>
+
+
+<div class="dsj-wrapper">
+	<div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">电商投融资数据库</span></p></div>
+			<div class="search-box">
+				<input type="text" name="name" id="name" placeholder="融资方/投资方" autocomplete="off">
+				<span id="searchBtn">搜索</span>
+			</div>
+			<if condition="$vip eq 0 ">
+				<div class="sjk-change-status-box" onclick="alert('您无权使用“数据图表化”功能，需开通VIP')">
+					<p></p>
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+			</if>
+			<if condition="$vip eq 2 ">
+
+	            <div class="sjk-change-status-box" id="screenshotBtn">
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+			</if>
+        </div>
+		<if condition="$vip eq 2 ">
+        	<!-- 电数宝工具组件 -->
+    		<include file="Public/dsb-tools"/>
+		</if>
+    </div>
+	<div class="sjk-bg4">
+		<div class="sjk-wrapper" style="padding: 5px 0">
+			<div class="search-type">
+				<div class="search-type-label"><p>领域</p></div>
+				<ul class="search-type-list" id="mainType">
+					
+				</ul>
+			</div>
+			<div class="search-type">
+				<div class="search-type-label"><p>行业</p></div>
+				<ul class="search-type-list" id="subType">
+				</ul>
+			</div>
+			<div class="search-type">
+				<div class="search-type-label"><p>融资轮次</p></div>
+				<ul class="search-type-list" id="round">
+				</ul>
+			</div>
+			<div class="search-type address-row">
+				<div class="search-type-label"><p>区域选择</p></div>
+				<div class="search-area">
+					<input type="text" id="area" name="area" placeholder="+ 点击选择区域">
+					<span id="emptyArea">清空区域</span>
+				</div>
+				<!-- <div class="search-time" id="ymView">
+				</div> -->
+			</div>
+			<div class="search-type time-row">
+				<div class="search-type-label"><p>时间段</p></div>
+				<div class="search-time">
+					<input type="text" id="ym" name="ym" placeholder="点击选择时间范围">
+				</div>
+				<div class="search-time" id="ymView">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="sjk-wrapper">
+		
+
+		<div class="sjk-table invest">
+			<div class="screenshot-table-title">
+				<p id="screenName">电商投融资数据榜</p>
+			</div>
+			<div class="sjk-data-title">
+				<div class="s-d-t-item item-small" id="allChoose">全选</div>
+				<div class="s-d-t-item item-small">序号</div>
+				<div class="s-d-t-item n">融资方</div>
+				<div class="s-d-t-item">所属行业</div>
+				<div class="s-d-t-item">所在地</div>
+				<div class="s-d-t-item sort down" data-key="time">融资时间<span></span></div>
+				<div class="s-d-t-item round">融资轮次</div>
+				<div class="s-d-t-item sort money" data-key="money">融资金额<span></span></div>
+				<div class="s-d-t-item">投资方</div>
+				<!-- <div class="s-d-t-item">&nbsp;</div> -->
+			</div>
+			<ul class="sjk-data-content" id="dataList">
+
+			</ul>
+			<div class="screenshot-table-footer clearfix">
+				<p>图表编制：</p>
+				<p>数据来源：WWW.100EC.CN</p>
+			</div>
+		</div>
+			
+		<div class="load-btn" id="loadBtn">查看更多</div>
+
+
+		<div class="sjk-form bz-form" style="color: #ccc">
+			<p>1、本投融资数据库数据来源于公司公开披露信息，根据的行业定义整理而成。</p>
+			<p>2、本投融资数据库所包含的所有内容（包括但不限于：文本、图形、图片、内容分类等）的所有权归所有。</p>
+			<p>3、不对以上融资信息的准确性、完整性、适用性等做任何承诺和保证。对因用户使用信息的任何行为导致的任何损失不承担任何责任。</p>
+			<p>4、对于未准确披露融资金额的，本数据库根据以下标准进行统计： </p>
+			<p style="text-indent: 2em">数（十、百、千）万 、数亿 分别对应 2（十、百、千）万、2亿 ；</p>
+			<p style="text-indent: 2em">百万级（千万级、亿级） 分别对应 1百万（千万、亿）。</p>
+			<p>5、广义融资包括以下三类：</p>
+			<p style="text-indent: 2em">第一类：普通融资，包括：种子轮、天使轮、Pre-A轮、A轮、A+轮、Pre-B轮、B轮、B+轮、C轮、C+轮、D轮、D+轮、E轮、F轮-上市前、战略投资等；</p>
+			<p style="text-indent: 2em">第二类：并购融资，包括：合并、收购；</p>
+			<p style="text-indent: 2em">第三类：上市融资，包括：IPO上市、 IPO上市后、新三板、新三板定增。</p>
+			<p style="text-indent: 2em">本数据库融资仅包括第一类和第二类。</p>
+			<p>6、为确保图表工具的正常显示以及使用，请使用除IE以外的主流浏览器（如：Firefox、Google Chrome、Safari、Opera等浏览器）。</p>
+			
+		</div>
+
+		<!-- <include file="Public/sjklogobox"/> -->
+	</div>
+
+	<include file="Public/footer"/>
+</div>
+<script src="__PJ__/home/js/laydate/laydate.js"></script>
+<script src="__PJ__/home/js/echarts.min.js"></script>
+<script src="__PJ__/home/js/city.data.js"></script>
+<script src="__PJ__/home/js/cityPlugin.js"></script>
+<script src="__PJ__/home/js/sjk/dataCgy_invest.js"></script>
+<script src="__PJ__/home/js/sjk/showEcharts_invest.js"></script>
+<script src="__PJ__/home/js/sjk/investSjk.js"></script>
+</body>
+</html>

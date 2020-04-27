@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电商消费评级数据库 </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+
+<script>
+    if(window.location.protocol.indexOf('https') != -1) {
+        window.location.href = window.location.href.replace('https', 'http')
+    }
+    
+</script>
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+</head>
+<body ontouchstart="">
+	
+
+<div class="dsb-header">
+    <include file="Public/head-nav"/>
+</div>
+<include file="Public/dsb-left-nav"/>
+
+<div class="unicorn-compare-box" id="compareBox">
+	<div class="mask"></div>
+	<div class="box-wrap">
+		<div class="box-wrap-head">
+			<p class="box-wrap-head-title">电商消费评级数据对比</p>
+			<p class="box-wrap-close"></p>
+		</div>
+		<div class="dropdown-box">
+			<div class="dropdown">
+				<p>数据字段</p>
+				<ul>
+					<li data-key="buy" data-name="company">综合指数</li>
+					<li data-key="score_ave" data-name="company">满意度</li>
+					<li data-key="feedback" data-name="company">回复时效性</li>
+					<li data-key="pre" data-name="company">平台反馈率</li>
+				</ul>
+			</div>
+		</div>
+		<div class="screenshot-compare-ECharts-title" id="screenName2">
+			<p></p>
+		</div>
+		
+		<div class="w">
+			<div id="showBox"></div>
+			<!-- <div class="sy-logo complaint-bg"></div> -->
+		</div>
+		<div class="screenshot-compare-ECharts-footer clearfix">
+			
+			<p>图表编制：电诉宝（电子商务消费纠纷调解平台）</p>
+			<p>数据来源：WWW.100EC.CN</p>
+		</div>
+	</div>
+</div>
+<div class="sjk-wrapper unicorn-vs" id="unicorn-vs">
+	<div class="u-v-title">
+		<p>平台数据添加<strong id="cpyNum"></strong></p>
+		<p>
+			<span id="removeDataBtn">清空数据</span>
+			<span id="showEChartsBtn">生成对比图</span>
+			<span id="hideBtn" class="active">收起</span>
+		</p>
+	</div>
+	<div class="u-v-content">
+		<ul class="u-v-c-list" id="u-v-c-list">
+		</ul>
+	</div>
+</div>
+<!-- 
+<div class="sjk-head">
+	<div class="sjk-head-logo">
+		<div class="sjk-wrapper">
+			<a href="http://www.100ec.cn/" target="_blank"><img src="http://www.100ec.cn/Public/home/images/wjsLOGO.png" alt=""></a>
+			<div class="sjk-change-status-box" id="screenshotBtn">
+				<div class="sjk-change-status-in-box">
+					<div class="sjk-change-status-circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<img src="__PJ__/home/images/sjk4.jpg" alt="" width="100%">
+	
+</div> -->
+
+<div class="dsj-wrapper">
+	<div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">电商评级数据库</span></p></div>
+            
+            <div class="sjk-change-status-box" id="screenshotBtn">
+                <div class="sjk-change-status-in-box">
+                    <div class="sjk-change-status-circle"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 电数宝工具组件 -->
+    	<include file="Public/dsb-tools"/>
+    </div>
+	<div class="sjk-bg4">
+		<div class="sjk-wrapper" style="padding: 5px 0">
+			<div class="search-type">
+				<div class="search-type-label"><p>领域</p></div>
+				<ul class="search-type-list" id="mainType">
+
+				</ul>
+			</div>
+			<div class="search-type">
+				<div class="search-type-label"><p>行业</p></div>
+				<ul class="search-type-list" id="subType">
+
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="sjk-bg4">
+
+		<div class="sjk-wrapper" style="padding: 0">
+
+			<div class="sjk-search-box2">
+				<!-- <div class="sjk-s-b-item">
+					<div class="sjk-s-b-i-item sjk-label-name"><p>所在行业</p></div>
+					<div class="sjk-s-b-i-item sjk-choose-div" id="field">
+						<p>全部</p>
+						<ul class="sjk-choose-list">
+						</ul>
+					</div>
+				</div> -->
+
+				<div class="sjk-s-b-item">
+					<div class="sjk-s-b-i-item sjk-label-name"><p>时间</p></div>
+					<div class="sjk-s-b-i-item sjk-choose-div" id="year">
+						<p>年份</p>
+						<ul class="sjk-choose-list">
+						</ul>
+					</div>
+					<div class="sjk-s-b-i-item sjk-choose-div" id="time">
+						<p>时间</p>
+						<ul class="sjk-choose-list">
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+
+	<div class="sjk-wrapper">
+		<div class="sjk-table complaint-sjk">
+			<div class="screenshot-table-title complaint">
+				<p id="screenName">电商2019年至今消费评级榜单</p>
+			</div>
+			<div class="sjk-data-title">
+				<div class="s-d-t-item item-small" id="allChoose">全选</div>
+				<div class="s-d-t-item item-small">排名</div>
+				<div class="s-d-t-item">平台名称</div>
+				<div class="s-d-t-item sort" data-key="pre">平台反馈率<span></span></div>
+				<div class="s-d-t-item sort" data-key="feedback">回复时效性<span></span></div>
+				<div class="s-d-t-item sort" data-key="score_ave">用户满意度<span></span></div>
+				<div class="s-d-t-item sort" data-key="buy">综合指数<span></span></div>
+				<div class="s-d-t-item">评级</div>
+				<div class="s-d-t-item">详情</div>
+			</div>
+			<ul class="sjk-data-content complaint-bg" id="dataList">
+
+			</ul>
+			<div class="screenshot-table-bz">
+				<div class="screenshot-table-bz-wrap">
+					<p>备注：</p>
+					<p>1、综合指数=平台回复率*0.5+回复时效性*0.3+用户满意度/10*0.2。</p>
+					<p>1.1、平台回复率：平台移交给被投诉电商用户投诉，被投诉电商的有效回复率。</p>
+					<p>1.2、回复时效性：平台回复时间小于72小时为1.0，回复时间大于72小时且小于120小时为0.6，回复时间大于120小时为0。</p>
+					<p>1.3、用户满意度：10分满分制，数据只截取已评分的用户投诉，未评分的用户投诉将不纳入满意度数据基数的统计。</p>
+					<p>2、评级划分由综合指数高低决定，不建议下单∈[0,0.4)，谨慎下单∈[0.4,0.75)，建议下单∈[0.75,1.0]。</p>
+					<p>3、由于投诉量的多少与平台的市场占有率有直接关联，故投诉量不列入评级统计范畴。</p>
+					<p>4、本榜单所有数据均由系统后台根据各电商平台上述行为，依据上述模型算法自动生成，不受任何人工因素影响。</p>
+				</div>
+			</div>
+
+			<div class="screenshot-table-footer clearfix">
+				<p>图表编制：电诉宝（电子商务消费纠纷调解平台）</p>
+				<p>数据来源：WWW.100EC.CN</p>
+			</div>
+		</div>
+			
+
+
+		<div class="sjk-form bz-form" id="bzContent" style="color: #ccc">
+			<p>1、统计数据可选择时间段进行查询，来源为电诉宝（电子商务消费纠纷调解平台）所选时间内接到的用户有效投诉案例库。</p>
+			<p>2、综合指数=平台回复率*0.5+回复时效性*0.3+用户满意度/10*0.2。</p>
+			<p style="text-indent: 2em">2.1、平台回复率：平台移交给被投诉电商用户投诉，被投诉电商的有效回复率。</p>
+			<p style="text-indent: 2em">2.2、回复时效性：平台回复时间小于72小时为1.0，回复时间大于72小时且小于120小时为0.6，回复时间大于120小时为0。</p>
+			<p style="text-indent: 2em">2.3、用户满意度：10分满分制，数据只截取已评分的用户投诉，未评分的用户投诉将不纳入满意度数据基数的统计。</p>
+			<p>3、评级划分由综合指数高低决定，不建议下单∈[0,0.4)，谨慎下单∈[0.4,0.75)，建议下单∈[0.75,1.0]。</p>
+			<p>4、由于投诉量的多少与平台的市场占有率有直接关联，故投诉量不列入评级统计范畴。</p>
+			<p>5、本榜单所有数据均由系统后台根据各电商平台上述行为，依据上述模型算法自动生成，不受任何人工因素影响。</p>
+			<p>6、本榜单选取平台标准为选取时间段内用户有效投诉量为5条及以上，5条以下平台不列入评级统计范畴。</p>
+			<p>7、本榜单据实时更新，榜单所有数据及排名仅代表查询当时。</p>
+			<p>8、由于榜单选取平台用户投诉量基数标准的变化，本榜单与报告发布的最终榜单可能存在不一致。</p>
+			<p>9、为确保图表工具的正常显示以及使用，请使用除IE以外的主流浏览器（如：Firefox、Google Chrome、Safari、Opera等浏览器）。</p>
+		</div>
+
+
+		<!-- <include file="Public/sjklogobox"/> -->
+	</div>
+
+	<include file="Public/footer"/>
+</div>
+
+<script src="__PJ__/home/js/echarts.min.js"></script>
+<script src="__PJ__/home/js/sjk/dataCgy_complaint.js"></script>
+<script src="__PJ__/home/js/sjk/showEcharts_complaint.js"></script>
+<script src="__PJ__/home/js/sjk/complaintSjk.js"></script>
+</body>
+</html>

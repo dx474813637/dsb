@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>【电商上市公司股价数据库】  电商门户  互联网+智库 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+<link href="__PJ__/home/css/stockSjk.css" rel="stylesheet">
+<script src="__PJ__/home/js/jquery.min.js" ></script>
+</head>
+
+<body>
+<div class="dsb-header">
+    <include file="Public/head-nav"/>
+</div>
+<include file="Public/dsb-left-nav"/>
+
+<div class="dsj-wrapper">
+    <div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">电商上市公司股价数据库</span></p></div>
+            <!-- <div class="search-box">
+                <input type="text" name="name" id="name" placeholder="应用名" autocomplete="off">
+                <span id="searchBtn">搜索</span>
+            </div>
+            <div class="sjk-change-status-box" id="screenshotBtn">
+                <div class="sjk-change-status-in-box">
+                    <div class="sjk-change-status-circle"></div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="black-bg">
+        
+        <div class="stock-container">
+            <div class="stock-main">
+
+                <div class="stock-nav">
+                    <div class="stock-nav-item">
+                        <ul>
+                            <li>A股</li>
+                            <li>港股</li>
+                            <li>美股</li>
+                        </ul>
+                    </div>
+                    <div class="stock-nav-item">
+                        <ul>
+                            <li>产业电商</li>
+                            <li>零售电商</li>
+                            <li>跨境电商</li>
+                            <li>生活服务电商</li>
+                            <li>物流科技</li>
+                            <li>金融科技</li>
+                            <li>服务商</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stock-table">
+                    <div class="stock-table-head">
+                        <div class="table-head-item">股票名称/代码</div>
+                        <div class="table-head-item">今日开盘</div>
+                        <div class="table-head-item">昨日收盘</div>
+                        <div class="table-head-item">涨跌额</div>
+                        <div class="table-head-item">涨跌幅</div>
+                        <div class="table-head-item">现价</div>
+                        <div class="table-head-item"></div>
+                    </div>
+                    <ul class="stock-data-list" id="list">
+
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+            <!-- <div class="stock_ad">
+                <div class="stock_ad_box">
+                    <div class="img_box"><a href="http://www.100ec.cn/zt/shsh/" target="_blank"><img src="http://www.100ec.cn/Public/home/images/stock_ad4.png"></a></div>
+                    <div class="ad_box"><a href="http://www.100ec.cn/zt/shsh/" target="_blank">上市电商网</a></div>
+                </div>
+                <div class="stock_ad_box">
+                    <div class="img_box"><a href="http://www.100ec.cn/zt/evaluation/" target="_blank"><img src="http://www.100ec.cn/Public/home/images/kuaip.png"></a></div>
+                    <div class="ad_box"><a href="http://www.100ec.cn/zt/evaluation/" target="_blank">上市快评</a></div>
+                </div>
+                <div class="stock_ad_box">
+                    <div class="img_box"><a href="http://www.100ec.cn/topic.html" target="_blank"><img src="http://www.100ec.cn/Public/home/images/zti.png"></a></div>
+                    <div class="ad_box"><a href="http://www.100ec.cn/topic.html" target="_blank">上市专题</a></div>
+                </div>
+                <div class="stock_ad_box">
+                    <div class="img_box"><a href="http://www.100ec.cn/zt/ybk/" target="_blank"><img src="http://www.100ec.cn/Public/home/images/stock_ad5.png"></a></div>
+                    <div class="ad_box"><a href="http://www.100ec.cn/zt/ybk/" target="_blank">上市电商研报库</a></div>
+                </div>
+                <div class="stock_ad_box">
+                    <div class="img_box"><a href="http://show.s.315.100ec.cn/" target="_blank"><img src="http://www.100ec.cn/Public/home/images/stock_ad6.png"></a></div>
+                    <div class="ad_box"><a href="http://show.s.315.100ec.cn/" target="_blank">上市电商投诉平台</a></div>
+                </div>
+              <div class="stock_ad_box">
+                  <div class="img_box"><a href="http://www.100ec.cn/Unicorns.html" target="_blank"><img src="http://www.100ec.cn/Public/home/images/Unicorns.png"></a></div>
+                    <div class="ad_box"><a href="http://www.100ec.cn/Unicorns.html" target="_blank">泛电商独角兽数据库</a></div>
+                </div>
+                <div class="line"></div>
+            </div> -->
+        </div>
+    </div>
+     <include file="Public/footer"/>
+
+</body>
+<div class="modelBox">
+    <div class="mask"></div>
+    <div class="model">
+        <div class="model-cpy-name">名称</div>
+        <div class="close" title="关闭"></div>
+        <div class="tabs">
+            <div class="tabs-item active" data-type="min">分时线走势图</div>
+            <div class="tabs-item" data-type="daily">日K线走势图</div>
+            <div class="tabs-item" data-type="weekly">周K线走势图</div>
+            <div class="tabs-item" data-type="monthly">月K线走势图</div>
+        </div>
+        <ul class="chart-list">
+            <li class="chart-item active" data-type="min"></li>
+            <li class="chart-item" data-type="daily"></li>
+            <li class="chart-item" data-type="weekly"></li>
+            <li class="chart-item" data-type="monthly"></li>
+        </ul>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://hq.sinajs.cn/list=sz002102,hk01833,hk01806,hk02051,hk01739,hk08083,hk08086,gb_xrf,gb_mkd,gb_hx,gb_uxin,gb_lx,gb_yrd,gb_ppdf,hk06060,hk02858,sz300740,gb_bzun,gb_ehic,gb_sfun,gb_coe,gb_jmu,gb_wuba,gb_bsti,sh603056,sz002120,sz002468,sz002280,sz300492,sz002098,sh601113,sz300209,sz002103,hk02098,sz399001,sh000001,hk02280,hk00400,hk00493,hk01810,hk01980,hk00699,hk00241,hk00241,hk08361,hk01060,hk00175,hk01211,hk00700,gb_ebay,gb_seco,gb_qd,gb_tour,gb_grpn,gb_litb,gb_wb,gb_cmcm,gb_leju,gb_xnet,gb_kang,gb_byddf,gb_jd,gb_jmei,gb_sina,gb_vips,gb_sohu,gb_momo,gb_ctrp,gb_jobs,gb_aapl,gb_zto,gb_tcehy,gb_baba,gb_amzn,gb_ntes,gb_bidu,gb_jt,sh603877,sh600859,sh601933,sh600180,sh600398,sh600797,sh600845,sh600233,sz002127,sz300178,sz000058,sz002029,sz002081,sz002183,sz300051,sz300017,sz300104,sz002352,sz002594,sz000503,sz002095,sz300226,sz002315,sz002640,sz002711,sz002024,sz002251,sz002327,sz002557,sz002582,sz002186,sz000651,sz002508,sz002563,gb_pdd,hk02003,gb_yi,hk03690,gb_pt,gb_wei,hk00780,hk01761,gb_tc,gb_mogu,gb_qfin,gb_xyf,gb_dnjr,gb_aihs,hk02013,sh603808,hk01797,gb_ruhn,gb_yj,gb_sy,gb_lk,gb_gsx,sz300783,sz300785,sh603613,hk01896,sz002959,sz300792,gb_duo,gb_qk,gb_dao,gb_ocft" charset="gb2312"></script>
+<script src="__PJ__/home/js/sjk/dataCgy_stock.js" type="text/javascript"></script>
+<script src="__PJ__/home/js/sjk/stockSjk.js" type="text/javascript"></script>
+<script>
+
+</script>
+</body>
+</html>

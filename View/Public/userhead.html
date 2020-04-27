@@ -1,0 +1,118 @@
+<div class="member-head">
+    <div class="header new-main">
+        <div class="header-item">
+            <a href="http://www.100ec.cn/" target="_blank"><img class="wjslogo" src="/Public/home/images/wjsLOGO.jpg" alt=""></a>
+            <ul class="h-i-column m-hide clearfix">
+                <li><a href="{$webhost}" target="_blank"></a></li>
+                <!-- <li><a href="{$webhost}/ecSearch.html" target="_blank">电商搜</a></li> -->
+                <li><a href="{$webhost}/zt/dszx/" target="_blank">研究</a></li>
+                <li><a href="http://show.s.315.100ec.cn/" target="_blank">维权</a></li>
+                <li><a href="{$webhost}/Index/project.html" target="_blank">投融</a></li>
+                <!-- <li><a href="{$webhost}/Index/shopList.html?terms=%E6%8A%A5%E5%91%8A" target="_blank">报告</a></li> -->
+                <li><a href="{$webhost}/topic.html" target="_blank">专题</a></li>
+                <li><a href="{$webhost}/dh.html" target="_blank">导航</a></li>
+                <li><a href="{$webhost}/zt/mtjz/" target="_blank">自媒体矩阵</a></li>
+            </ul>
+        </div>
+        <!-- PC设备登录导航状态栏菜单栏 -->
+        <div class="header-item m-hide">
+            <empty name="Think.session.homename">
+			<!-- 未登录 -->
+            <p class="unlogin">请先<a href="http://www.100ec.cn/Index/login.html" target="_blank">登录或注册</a></p>
+			</empty>
+            <div>
+                <span class="line-bg"></span>
+                <i class="glyphicon glyphicon-qrcode" title="二维码"></i>
+                <p class="head-list"><img src="__PJ__/home/images/zxewm.png" alt=""></p>
+            </div>
+			<notempty name="Think.session.homename">
+            <!-- 已登录 -->
+            <div>
+                <span class="line-bg"></span>
+                <a href="{$webhost}/User/member.html" target="_blank" ><i class="glyphicon glyphicon-user" title="用户"></i></a>
+                <ul class="head-list">
+                    <li><a href="javascript:void">欢迎您，{$Think.session.homename}</a></li>
+                </ul>
+            </div>
+            <div class="l">
+                <span class="line-bg"></span>
+                <i class="glyphicon glyphicon-menu-hamburger"></i>
+                <ul class="head-list">
+                    <li><a href="{$webhost}/User/projectManagement.html" target="_blank">项目管理</a></li>
+                    <!-- <li><a href="{$webhost}/Index/memberLevel.html" target="_blank">融资服务</a></li> -->
+                    <li><a href="{$webhost}/User/index.html" target="_blank">投稿管理</a></li>
+                    <li><a href="{:U('Index/logout')}">安全退出</a></li>
+                </ul>
+            </div>
+			</notempty>
+        </div>
+
+        <!-- 移动设备登录导航状态栏 -->
+        <div class="header-item m-show">
+			<empty name="Think.session.homename">
+			<!-- 未登录 -->
+            <p class="unlogin">请先<a href="http://www.100ec.cn/Index/login.html" target="_blank">登录或注册</a></p>
+			</empty>
+			<notempty name="Think.session.homename">
+            <!-- 已登录 -->
+            <div class="l">
+                <i class="glyphicon glyphicon-menu-hamburger"></i>
+            </div>
+			</notempty>
+        </div>
+    </div>
+</div>
+
+<!-- 移动设备用户信息菜单 -->
+<div class="user-menu-m m-show" id="menu">
+    <div class="user-m-img clearfix">
+        <empty name="Think.session.homeimg"><img src="__PJ__/home/images/zxewm.png" alt=""><else /><img src="/{$Think.session.homeimg}" alt=""></empty>
+        <p>账号：{$Think.session.homeusername}</p>
+    </div>
+    <ul class="nav-menu clearfix">
+        <!-- <li><a href="{$webhost}/User/index.html">投稿管理</a></li>
+        <li><a href="{$webhost}/User/add.html">新增投稿</a></li>
+
+        <li><a href="{$webhost}/Index/shopList.html?terms=%E6%8A%A5%E5%91%8A">商城列表</a></li>
+        <li><a href="{$webhost}/User/shopCar.html">购物车</a></li>
+        <li><a href="{$webhost}/User/order.html">我的订单</a></li>
+        <li><a href="{$webhost}/User/collection.html">商品收藏</a></li> -->
+
+        <li><a href="{$webhost}/Index/globalData.html">全球电商数据库</a></li>
+        <li><a href="{$webhost}/Index/industryData.html?name=dzsw">电商行业数据</a></li>
+        <li><a href="{$webhost}/Index/park.html">电商产业园库</a></li>
+        <li><a href="{$webhost}/stock.html">股价数据</a></li>
+        <li><a href="{$webhost}/zt/cbk/">电商上市财报</a></li>
+        <li><a href="{$webhost}/Home/Index/newFinancialData.html?name=壹玖壹玖">新三板财报数据</a></li>
+        <li><a href="{$webhost}/unicornData.html">独角兽数据</a></li>
+        <li><a href="{$webhost}/complaintData.html">评级数据库</a></li>
+        <li><a href="{$webhost}/appStoreRank.html">AppStore数据库</a></li>
+        <li><a href="{$webhost}/investData.html">投融资数据库</a></li>
+
+        <!-- <li><a href="{$webhost}/User/projectManagement.html">项目管理</a></li>
+        <li><a href="{$webhost}/User/projectCollection.html">我的关注</a></li>
+        <li><a href="{$webhost}/User/sendMsg.html">我的约谈</a></li>
+        <li><a href="{$webhost}/User/investorAdd.html">投资人认证</a></li> -->
+
+        <!-- <li><a href="{$webhost}/ecSearch.html">电商搜</a></li>
+        <li><a href="{$webhost}/zt/dy20190318/">电商周刊</a></li>
+        <li><a href="http://show.s.315.100ec.cn/">投诉维权</a></li> -->
+        <li><a href="{$webhost}/User/member.html">账号信息</a></li>
+
+        <li><a href="{$webhost}/User/change_pwd.html">密码修改</a></li>
+        <li><a href="{$webhost}/User/message.html">系统消息</a></li>
+        <li><a href="{$webhost}/Index/memberLevel.html">会员权益</a></li>
+        <li><a href="{$webhost}/User/invoice.html">发票申请</a></li>
+
+
+    </ul>
+    <div class="user-m-bottom">
+        <p> 版权所有</p>
+        <p><a href="{:U('Index/logout')}">安全退出</a></p>
+    </div>
+</div>
+
+<!-- <script>
+$(function () {
+})
+</script> -->

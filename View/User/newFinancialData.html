@@ -1,0 +1,217 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电商新三板财报数据库 </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+</head>
+<body >
+
+<if condition="$vip eq 1 ">
+	<include file="Public/dsb-warn"/>
+</if>
+<div class="jiucuo-box" id="jiucuo2">
+	<p>我要纠错</p>
+</div>
+
+<div class="jiucuo-model-box" id="jiucuo-model-box">
+	
+</div>
+<div class="data-vs-wrapper">
+	<div class="data-vs-main">
+		<div class="data-vs-title">
+			核心数据对比
+			<span class="close icon icon9"></span>
+		</div>
+		<div class="tiaojian">
+			<div class="choose">
+				<div class="choose-t">对比数据：</div>
+				<div class="select-item select-key">
+					<span data-key="">选择字段</span>
+					<ul>
+						<li data-key="shares">营收</li>
+						<li data-key="a100">净利润</li>
+						<li data-key="a101">总资产</li>
+						<li data-key="a102">净资产</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="choose">
+				<div class="choose-t">添加公司：</div>
+				<div class="select-item select-category">
+					<span>选择分类</span>
+					<ul>
+						<li data-category="B2C">零售电商</li>
+						<li data-category="B2B">产业电商</li>
+						<li data-category="O2O">生活服务电商</li>
+						<li data-category="kj">跨境电商</li>
+					</ul>
+				</div>
+				<div class="select-item select-company">
+					<span>选择公司</span>
+					<ul>
+					</ul>
+				</div>
+			</div>
+		</div>
+			<div class="choose chosen">
+				<div class="choose-t">已选公司：</div>
+			</div>
+			
+
+		<div class="show-pic-btn">
+			<div>生成数据对比图表</div>
+			<!-- <p>数据对比的时间横坐标以首选公司披露的财报时间为基值，与后添加的公司数据生成对比图。多家公司数据对比时可能会造成页面卡顿</p> -->
+		</div>
+		<div class="tu2">
+			<img src="https://www.100ec.cn/Public/home/images/sy2.png" alt="" class="shuiyin" style="top: 40%">
+			<div class="data-pic" id="chart2"></div>
+		</div>
+		<div class="ps">
+			<p style="font-weight: bold;">对比工具使用说明：</p>
+			<p>1、生成对比图需要选择对比数据的字段以及公司，支持多家公司数据对比。</p>
+			<p>2、如未生成对比图并且显示“无数据对比”提示框，则首选公司在该字段下暂无数据。</p>
+			<p>3、对比图最右侧一列为工具栏：</p>
+			<p class="s">（1）“切换为折线图”点击后对比图数据将以折线图呈现；</p>
+			<p class="s">（2）“切换为柱状图”点击后对比图数据将以柱状图呈现；</p>
+			<p class="s">（3）“还原”点击后全部还原初始对比图状态。</p>
+			<p>4、右上角图例组件展现了不同系列的标记，颜色和名字。可以通过点击图例控制哪些系列不显示。</p>
+			<p>5、底部组件用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。。</p>
+		</div>
+	</div>
+</div>
+
+
+<include file="Public/dsb-header"/>
+<include file="Public/dsb-left-nav"/>
+
+<div class="dsj-wrapper">
+	<div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">新三板电商财报数据库</span></p></div>
+            
+			<if condition="$vip eq 0 ">
+				<div class="sjk-change-status-box" onclick="alert('您无权使用“数据图表化”功能，需开通VIP')">
+					<p></p>
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+			</if>
+			<if condition="$vip eq 2 ">
+	            <div class="sjk-change-status-box" id="screenshotBtn">
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+	        </if>
+        </div>
+		<if condition="$vip eq 2 ">
+	        <!-- 电数宝工具组件 -->
+	    	<include file="Public/dsb-tools"/>
+	    </if>
+    </div>
+	<div class="financial-choose">
+		<div class="financial-wrapper choose-box">
+			<div class="category">
+				<div class="category-item" data-category="B2C">零售电商</div>
+				<div class="category-item" data-category="B2B">产业电商</div>
+				<div class="category-item" data-category="O2O">生活服务电商</div>
+				<div class="category-item" data-category="kj">跨境电商</div> 
+			</div>
+			<ul class="cpy">
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="financial-wrapper">
+		<div class="cpy-info">
+			<div class="cpy-name">&nbsp;</div>
+			<div class="cpy-stock">&nbsp;</div>
+			<if condition="$vip eq 0 ">
+				<div class="data-vs">
+					<p>请开通VIP权限即可进行数据对比</p>
+				</div>
+			</if>
+			<if condition="$vip eq 2 ">
+				<div class="data-vs">
+					<p id="dataVs">行业数据对比</p>
+				</div>
+			</if>
+		</div>
+		<div class="financial-form">
+			<!-- <div class="financial-title">数据图表</div> -->
+			<div class="financial-category">
+				<span>数据分类</span>
+				<ul class="category-more">
+					<li class="data" data-num="shares">营收及其同比增长率</li>
+					<li class="data" data-num="a100">净利润及其同比增长率</li>
+					<li class="data" data-num="a101">总资产及其同比增长率</li>
+					<li class="data" data-num="a102">净资产及其同比增长率</li>
+				</ul>
+			</div>
+			<div class="tu">
+				<div class="screenshot-industry-title" id="screenIndustry">
+					<p></p>
+				</div>
+
+				<div class="screenshot-industry-footer">
+					<p>图表编制：网经社</p>
+					<p>数据来源：WWW.100EC.CN</p>
+				</div>
+				<div class="sjk-chart" id="chart">
+				</div>
+				<!-- <div class="sy-logo"></div> -->
+			</div>
+			<div class="financial-title">核心数据表</div>
+			<div class="financial-main">
+				<div class="form-list label">
+					<!-- <div class="form-label"></div>-->
+				</div>
+				<div class="form-window">
+					<div class="form-data">
+						<!-- <div class="form-list">
+							<div class="form-label">2019年Q2</div>
+						</div> -->
+					</div>
+				</div>
+				
+			</div>
+
+
+			<div class="financial-title">招股书全文</div>
+			<div class="financial-main" id="zgs">
+			</div>
+			<div class="financial-title">报告全文</div>
+			<div class="financial-main" id="bg">
+			</div>
+		</div>
+
+		<div class="financial-form bz-form" style="color: #ccc">
+			<p>1、数据来源均为各新三板电商挂牌公司公开披露的财报，如有错误，请点击“<span id="jiucuo1">我要纠错</span>”在线递交错误信息。</p>
+			<p>2、为确保图表工具的正常显示以及使用，请使用除IE以外的主流浏览器（如：Firefox、Google Chrome、Safari、Opera等浏览器）</p>
+		</div>
+
+		<!-- <include file="Public/sjklogobox"/> -->
+
+	</div>
+
+	<include file="Public/footer"/>
+</div>
+
+<script src="__PJ__/home/js/echarts.min.js"></script>
+<script src="__PJ__/home/js/sjk/dataCgy_newfinancial.js"></script>
+<script src="__PJ__/home/js/data-vs.js"></script>
+<script src="__PJ__/home/js/sjk/findError.js"></script>
+<script src="__PJ__/home/js/sjk/showEcharts_fin.js"></script>
+<script src="__PJ__/home/js/sjk/newfinancialSjk.js"></script>
+</body>
+</html>

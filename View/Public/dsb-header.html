@@ -1,0 +1,84 @@
+<link href="__PJ__/home/css/100ec-head-nav1.css" rel="stylesheet">
+<link href="__PJ__/home/css/dsb-header.css" rel="stylesheet">
+<!--top-->
+<div id="Rtop"></div>
+
+<div class="dsb-header">
+	<div class="dsb-header-logo">
+		<a href="https://www.100ec.cn/Index/dsb_product.html" target="_blank">
+			<img src="http://www.100ec.cn/Public/home/images/dsb-logo.png" alt="">
+		</a>
+	</div>
+
+	<div class="dsb-header-ul">
+
+        <empty name="Think.session.homename">
+			<li class="dsb-header-ul-item">
+				<p><a href="/Index/dsb-reg.html" target="_blank">注册</a></p>
+			</li>
+			<li class="dsb-header-ul-item">
+				<p><a href="/Index/dsb-login.html" target="_blank">登录</a></p>
+			</li>
+		</empty>
+		
+		<notempty name="Think.session.homename">
+			<li class="dsb-header-ul-item">
+				<p class="user-info-label">{$Think.session.homename}</p>
+				<div class="dsb-header-user-card">
+					<div class="user-info">
+						<empty name="Think.session.homeimg"><img src="__PJ__/home/images/me.jpg" alt=""><else /><img src="/{$Think.session.homeimg}" alt=""></empty>
+						<div class="user-text">
+							<p class="account">账号：{$Think.session.homeusername}</p>
+							<if condition="$vip eq 0 ">
+								<p class="vip0">您的权限为试用账号。<a style="color: dodgerblue" href="http://www.100ec.cn/Index/dsb_vip.html" target="_blank">【开通VIP】</a></p>
+							</if>
+							<if condition="$vip eq 1 ">
+								<p class="vip0">账号试用期限已到期。<a style="color: dodgerblue" href="http://www.100ec.cn/Index/dsb_vip.html" target="_blank">【开通VIP】</a></p>
+							</if>
+							<if condition="$vip eq 2 ">
+								<p class="vip1">您的权限为VIP，全部功能已开通。</p>
+							</if>
+						</div>
+        				
+					</div>
+					<ul class="dsb-header-menu">
+						<li><a href="{$webhost}/User/globalData.html" target="_blank">全球数据库</a></li>
+						<li><a href="{$webhost}/User/industryData.html?name=dzsw" target="_blank">行业数据库</a></li>
+						<li><a href="{$webhost}/Index/park.html" target="_blank">电商产业园库</a></li>
+						<li><a href="{$webhost}/zt/cbk/" target="_blank">财报数据库</a></li>
+						<li><a href="{$webhost}/User/newFinancialData.html?name=壹玖壹玖" target="_blank">新三板数据库</a></li>
+						<li><a href="{$webhost}/User/unicornData.html" target="_blank">独角兽数据库</a></li>
+						<li><a href="{$webhost}/Index/complaintData.html" target="_blank">评级数据库</a></li>
+						<li><a href="{$webhost}/User/investData.html" target="_blank">投融资数据库</a></li>
+						<li><a href="{$webhost}/User/appStoreRank.html" target="_blank">AppStore数据</a></li>
+					</ul>
+					<ul class="dsb-header-menu">
+						<li><a href="{$webhost}/Index/cpyDataList.html" target="_blank">公司数据列表</a></li>
+						<li><a href="{$webhost}/Index/cpyDataList.html?type=上市" target="_blank">上市</a></li>
+						<li><a href="{$webhost}/Index/cpyDataList.html?type=新三板" target="_blank">新三板</a></li>
+						<li><a href="{$webhost}/Index/cpyDataList.html?type=独角兽" target="_blank">独角兽</a></li>
+						<li><a href="{$webhost}/Index/cpyDataList.html?type=千里马" target="_blank">千里马</a></li>
+					</ul>
+					<ul class="dsb-header-menu">
+						<li><a href="{$webhost}/Index/dsb_product.html" target="_blank">产品介绍</a></li>
+						<li><a href="{$webhost}/Index/dsb_vip.html" target="_blank">会员权益</a></li>
+						<li><a href="{$webhost}/Index/dsb_help.html" target="_blank">用户手册</a></li>
+					</ul>
+					<ul class="dsb-header-ac-menu">
+						<li><a href="{$webhost}/User/member.html" target="_blank">账号信息</a></li>
+						<li><a href="{$webhost}/User/change_pwd.html" target="_blank">密码修改</a></li>
+						<li><a href="{:U('Index/logout')}">安全退出</a></li>
+					</ul>
+					<div class="dsb-header-mask"></div>
+
+				</div>
+			</li>
+		</notempty>
+	</div>
+</div>
+
+<div class="returntop" id="return">
+    <a href="#Rtop"><img src="http://www.100ec.cn/Public/home/images/return.png" width="100%"></a>
+</div>
+
+<script src="__PJ__/home/js/dsb-header.js"></script>

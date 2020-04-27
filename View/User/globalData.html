@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全球电商数据库 电数宝 </title>
+	<meta name="keywords" content="全球电商数据库 电数宝  中国 美国 日本 德国 韩国 英国 法国 加拿大 西班牙 澳大利亚 印度 泰国 意大利 丹麦 瑞士 荷兰 俄罗斯 墨西哥 比利时 瑞典 巴西 土耳其 爱尔兰 奥地利 乌克兰 南非 新加坡 卢森堡 电子商务交易额  网络零售交易额 互联网普及率">
+	<meta name="description" content="全球电商数据库对全球主要国家及地区核心电子商务相关数据进行监测、统计、对比、分析，包括电商交易额、增长率、网络零售交易额、互联网普及率等。">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+</head>
+<body>
+
+<if condition="$vip eq 1 ">
+	<include file="Public/dsb-warn"/>
+</if>
+<div class="jiucuo-box" id="jiucuo2">
+	<p>我要纠错</p>
+</div>
+<div class="jiucuo-model-box" id="jiucuo-model-box">
+	
+</div>
+<div class="data-vs-wrapper">
+	<div class="data-vs-main">
+		<div class="data-vs-title">
+			核心数据对比
+			<span class="close icon icon9"></span>
+		</div>
+		<div class="tiaojian">
+			<div class="choose">
+				<div class="choose-t">对比数据：</div>
+				<div class="select-item select-key">
+					<span data-key="">选择字段</span>
+					<ul>
+						<li data-key="dtime">电子商务交易额</li>
+						<li data-key="a100">网络零售交易额</li>
+						<li data-key="a102">互联网普及率</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="choose">
+				<div class="choose-t">添加国家：</div>
+				<div class="select-item select-company">
+					<span>选择分类</span>
+					<ul id="vsCpy">
+					</ul>
+				</div>
+			</div>
+		</div>
+			<div class="choose chosen">
+				<div class="choose-t">已选国家：</div>
+			</div>
+			
+
+		<div class="show-pic-btn">
+			<div>生成数据对比图表</div>
+			<!-- <p>数据对比的时间横坐标以首选公司披露的财报时间为基值，与后添加的公司数据生成对比图。多家公司数据对比时可能会造成页面卡顿</p> -->
+		</div>
+		<div class="tu2">
+			<img src="https://www.100ec.cn/Public/home/images/sy2.png" alt="" class="shuiyin" style="top: 40%">
+			<div class="data-pic" id="chart2"></div>
+		</div>
+		<div class="ps">
+			<p style="font-weight: bold;">对比工具使用说明：</p>
+			<p>1、生成对比图需要选择对比数据的字段以及公司，支持多家公司数据对比。</p>
+			<p>2、如未生成对比图并且显示“无数据对比”提示框，则首选公司在该字段下暂无数据。</p>
+			<p>3、对比图最右侧一列为工具栏：</p>
+			<p class="s">（1）“切换为折线图”点击后对比图数据将以折线图呈现；</p>
+			<p class="s">（2）“切换为柱状图”点击后对比图数据将以柱状图呈现；</p>
+			<p class="s">（3）“还原”点击后全部还原初始对比图状态。</p>
+			<p>4、右上角图例组件展现了不同系列的标记，颜色和名字。可以通过点击图例控制哪些系列不显示。</p>
+			<p>5、底部组件用于区域缩放，从而能自由关注细节的数据信息，或者概览数据整体，或者去除离群点的影响。。</p>
+		</div>
+	</div>
+</div>
+
+
+<include file="Public/dsb-header"/>
+<include file="Public/dsb-left-nav"/>
+
+
+	
+<div class="dsj-wrapper">
+	<div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">全球电商数据库</span></p></div>
+            
+			<if condition="$vip eq 0 ">
+				<div class="sjk-change-status-box" onclick="alert('您无权使用“数据图表化”功能，需开通VIP')">
+					<p></p>
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+			</if>
+			<if condition="$vip eq 2 ">
+	            <div class="sjk-change-status-box" id="screenshotBtn">
+	                <div class="sjk-change-status-in-box">
+	                    <div class="sjk-change-status-circle"></div>
+	                </div>
+	            </div>
+	        </if>
+        </div>
+		<if condition="$vip eq 2 ">
+	        <!-- 电数宝工具组件 -->
+	    	<include file="Public/dsb-tools"/>
+	    </if>
+    </div>
+	<div class="sjk-bg4">
+		<div class="sjk-wrapper" style="padding: 5px 0">
+			<div class="search-type">
+				<div class="search-type-label"><p>国家</p></div>
+				<ul class="search-type-list" id="country">
+					
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<!-- div class="financial-choose">
+		<div class="financial-wrapper choose-box">
+			<div class="category">
+				<div class="category-item" data-category="B2C">零售电商</div>
+				<div class="category-item" data-category="B2B">产业电商</div>
+				<div class="category-item" data-category="O2O">生活服务电商</div>
+				<div class="category-item" data-category="kj">跨境电商</div> 
+			</div>
+			<ul class="cpy">
+
+			</ul>
+		</div>
+	</div> -->
+
+	<div class="financial-wrapper">
+		<div class="cpy-info">
+			<div class="cpy-name">&nbsp;</div>
+			<!-- <div class="cpy-stock">&nbsp;</div> -->
+			
+			<if condition="$vip eq 0 ">
+				<div class="data-vs">
+					<p>请开通VIP权限即可进行数据对比</p>
+				</div>
+			</if>
+			<if condition="$vip eq 2 ">
+				<div class="data-vs">
+					<p id="dataVs">数据对比</p>
+				</div>
+			</if>
+		</div>
+		<div class="financial-form">
+			<!-- <div class="financial-title">数据图表</div> -->
+			<div class="financial-category">
+				<span>数据分类</span>
+				<ul class="category-more">
+					<li class="data" data-num="dtime">电子商务交易额及其增长率</li>
+					<li class="data" data-num="a100">网络零售交易额及其增长率</li>
+					<li class="data" data-num="a102">互联网普及率及其增长率</li>
+				</ul>
+			</div>
+			<div class="tu">
+				<div class="screenshot-industry-title" id="screenIndustry">
+					<p></p>
+				</div>
+
+				<div class="screenshot-industry-footer">
+					<p>图表编制：</p>
+					<p>数据来源：WWW.100EC.CN</p>
+				</div>
+				<div class="sjk-chart" id="chart">
+				</div>
+				<!-- <div class="sy-logo"></div> -->
+			</div>
+			<div class="financial-title">核心数据表</div>
+			<div class="financial-main">
+				<div class="form-list label">
+					<!-- <div class="form-label"></div>-->
+				</div>
+				<div class="form-window">
+					<div class="form-data">
+						<!-- <div class="form-list">
+							<div class="form-label">2019年Q2</div>
+						</div> -->
+					</div>
+				</div>
+				
+			</div>
+
+
+		</div>
+
+		<div class="financial-form bz-form" style="color: #ccc">
+			<p>1、全球电商数据库数据来源：世界银行、联合国贸易和发展会议、欧洲电子商务协会、美国商务部、德国零售业协会、加拿大统计局、韩国国家统计局、中国商务部、中国国际电子商务中心研究院等，以及其他政府部门、科研机构、行业协会、咨询公司和其他研究方法估算、分析得出。如有错误，请点击“<span id="jiucuo1">我要纠错</span>”在线递交错误信息。</p>
+			<p>2、为确保图表工具的正常显示以及使用，请使用除IE以外的主流浏览器（如：Firefox、Google Chrome、Safari、Opera等浏览器）</p>
+		</div>
+
+		<!-- <include file="Public/sjklogobox"/> -->
+
+	</div>
+
+	<include file="Public/footer"/>
+</div>
+<script src="__PJ__/home/js/echarts.min.js"></script>
+<script src="__PJ__/home/js/sjk/dataCgy_global.js"></script>
+<script src="__PJ__/home/js/sjk/globaldata-vs.js"></script>
+<script src="__PJ__/home/js/sjk/findError.js"></script>
+<script src="__PJ__/home/js/sjk/showEcharts_fin.js"></script>
+<script src="__PJ__/home/js/sjk/globalSjk.js"></script>
+</body>
+</html>

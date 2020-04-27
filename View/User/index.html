@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>投稿管理 会员中心</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+<link href="__PJ__/home/css/bootstrap.min.css" rel="stylesheet">
+<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+<link href="__PJ__/home/css/member.css" rel="stylesheet">
+    <script src="__PJ__/home/js/jquery.min.js"></script>
+<style>
+</style>
+</head>
+
+<body>
+
+<div class="user-head-wrapper">
+    <include file="Public/dsb-header"/>
+</div>
+
+
+<include file="Public/usernav"/>
+
+
+
+<div class="member-article member-box mb">
+    <h4 class="m-title"><i class="glyphicon glyphicon-list"></i>投稿管理</h4>
+    <p class="m-label"><a href="add.html" target="_blank" style="display: block;">新增</a></p>
+    <table class="m-a-list table table-striped">
+        <thead>
+            <tr>
+                <th>所属分类</th>
+                <th>文章标题</th>
+                <th>投稿时间</th>
+                <th>审核情况</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="val" empty="$empty">
+            <tr>
+                <td>{$category[$val['type']]}</td>
+                <td>{$val['title']}</td>
+                <td>{$val['post_date']}</td>
+                <td><if condition="$val['status'] eq 0">审核中</if><if condition="$val['status'] eq 2">已录用</if></td>
+                <td><a href="{:U('edit',array('aid'=>$val['id']))}">修改</a>&nbsp;-&nbsp;<a href="{:U('del',array('aids'=>$val['id']))}" style="color:#900" onClick="return confirm('确定删除?');">删除</a></td>
+            </tr>
+        </volist>
+            
+        </tbody>
+    </table>
+    {$page}
+</div>
+
+<include file="Public/userfooter"/>
+
+<script src="__PJ__/home/js/jquery.min.js"></script>
+<script src="__PJ__/home/js/bootstrap.min.js"></script>
+<script src="__PJ__/home/js/user/user.js"></script>
+<script>
+    $('.shop-box .shop-item').each(function(i){
+        $(this).on('click',function(){
+            $(this).css({'color':'f90'})
+            $('.m-s-result').eq(i).addClass('list-active').siblings().removeClass('list-active')
+        })
+    })
+</script>
+</body>
+</html>
+

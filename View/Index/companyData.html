@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司数据</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<script>window.location.href = location.href.replace('Index', 'User')</script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<link href="__PJ__/home/css/stockSjk.css" rel="stylesheet">
+	<link href="__PJ__/home/css/cpyData.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+
+	<style>
+		body {
+			background: #0B0F1B;
+		}
+	</style>
+</head>
+<body>
+
+
+
+
+<div class="dsb-header">
+    <include file="Public/head-nav"/>
+</div>
+<include file="Public/dsb-left-nav"/>
+
+
+<div class="dsj-wrapper cpy">
+	<div class="sjk-wrapper sjk-bg4">
+		<div class="cpy-info">
+			<p class="cpy-name">-</p>
+			<p class="stock-code"></p>
+		</div>
+		<div class="cpy-content">
+			<p></p>
+		</div>
+		<div class="sjk-bg4" style="display: none">
+			<ul class="stock-module-ul" id="stockModule">
+				<li>今日开盘：<p id="tday">-</p></li>
+				<li>昨日收盘：<p id="yday">-</p></li>
+				<li>涨跌额：<p class="rate" id="rate1">-</p></li>
+				<li>涨跌幅：<p class="rate" id="rate2">-</p></li>
+				<li>现价：<p id="now">-</p></li>
+				<li class="small">股价走势图<p class="show-btn" title="走势图" id="zst"></p></li>
+			</ul>
+		</div>
+	</div>
+	<div class="sjk-wrapper">
+		<ul class="tabs-module" id="tabsModule">
+			<li class="zx-tab" data-type="zx">资讯文章</li>
+			<li class="cb-tab" data-type="cb">财报数据</li>
+			<li class="ncb-tab" data-type="ncb">财报数据</li>
+			<li class="pj-tab" data-type="pj">评级数据</li>
+			<li class="trz-tab" data-type="trz">投融资数据</li>
+			<li class="app-tab" data-type="app">关联APP数据</li>
+		</ul>
+		<div class="data-module">
+			<div class="data-module-item zx">
+				<div class="item-bg" id="zxList">
+					<div id="xx"><div class="cpy-menu" id="zxMenu"></div></div>
+					
+					<ul class="data-list" id="dataList">
+					
+					</ul>
+					<ul class="zx-page" id="page"></ul>
+				</div>
+				
+			</div>
+			<div class="data-module-item cb">
+				<div class="item-bg">
+					<div class="item-title">
+						<p>财报数据字段统计图</p>
+						<div class="more-info" id="moreInfo">
+						</div>
+					</div>
+					<div class="cpy-menu" id="cbEchartsMenu"></div>
+					<div class="cb-data-echarts" id="cbEcharts"></div>
+				</div>
+				
+				<div class="item-bg">
+					<div class="item-title" id="cbDataListTitle">核心数据</div>
+					<div class="cd-data-table">
+						<ul class="cb-data-key-item" id="cbKeyList">
+						</ul>
+						<div class="cb-data-list" id="cbDataList">
+						</div>
+					</div>
+
+				</div>
+				<div class="item-bg" id="zgsUrl">
+					<div class="item-title">招股书全文</div>
+					<ul class="cb-url-tables">
+					</ul>
+				</div>
+				<div class="item-bg" id="cbUrl">
+					<div class="item-title">财报全文</div>
+					<ul class="cb-url-tables">
+					</ul>
+				</div>
+
+			</div>
+			<div class="data-module-item pj">
+				<div class="item-bg">
+					<div class="item-title">
+						<p>相关平台</p>
+						<div class="more-info">
+							<a href="http://show.s.315.100ec.cn/" target="_blank">我要投诉</a>
+							<a href="http://www.100ec.cn/Index/complaintData.html" target="_blank">评级总榜</a>
+						</div>
+					</div>
+					<div class="cpy-menu" id="pjMenu"></div>
+				</div>
+				<div class="item-bg" id="pjCpy">
+					<div class="item-title">
+						<p id="pjTitle">评级数据</p>
+						<div class="more-info">
+							<a id="pjDataVs" href="javascript:;" target="_blank">数据对比</a>
+						</div>
+					</div>
+					<div class="cpy-menu" id="pjTime"></div>
+					<div class="cb-data-echarts" id="pjEcharts">
+					</div>
+				</div>
+			</div>
+			<div class="data-module-item trz">
+				<div class="item-bg">
+					<div class="item-title">
+						<p>相关平台</p>
+					</div>
+					<div class="cpy-menu" id="trzMenu"></div>
+				</div>
+				<div class="item-bg" id="trzCpy">
+					<div class="item-title">
+						<p id="trzTitle">投融资数据</p>
+						<div class="more-info">
+							<a href="http://www.100ec.cn/Index/finance.html" target="_blank">融资帮助</a>
+							<a id="trzMoreA" href="javascript:;" target="_blank">数据对比</a>
+						</div>
+					</div>
+					<div class="cpy-menu" id="trzTabs"></div>
+					<div class="cb-data-echarts" id="trzEcharts">
+					</div>
+					<div id="dataTables">
+						<ul class="data-table-title">
+							<li class="data-table-item small">序号</li>
+							<li class="data-table-item">融资方</li>
+							<li class="data-table-item">所属行业</li>
+							<li class="data-table-item">所在地</li>
+							<li class="data-table-item">融资时间</li>
+							<li class="data-table-item">融资轮次</li>
+							<li class="data-table-item">融资金额</li>
+							<li class="data-table-item large">投资方</li>
+						</ul>
+						<ul class="data-list" id="trzDataList">
+						</ul>
+					</div>
+						
+				</div>
+			</div>
+			<div class="data-module-item app">
+				<div class="item-bg">
+					<div class="item-title">
+						<p>关联App</p>
+					</div>
+					<div class="cpy-menu" id="appMenu"></div>
+				</div>
+				<div class="item-bg" id="appData">
+					<div class="item-title">
+						<p>App信息</p>
+						<div class="more-info">
+							<!-- <a id="appMonthData" href="javascript:;" target="_blank">App月活数据</a> -->
+							<a href="/User/appStoreRank.html" target="_blank">AppStore总榜</a>
+							<a id="appMoreInfo" href="javascript:;" target="_blank">详细信息</a>
+						</div>
+					</div>
+
+					<div class="app-group app-info-group">
+						<div class="app-logo">
+							<img id="logo" src="http://www.100ec.cn/Public/home/images/icon-app-logo-loading.png" alt="">
+						</div>	
+						<div class="app-main-info">
+							<p class="name" id="trackName">应用名</p>
+						</div>
+					</div>
+					<div class="app-group">
+						<div class="app-sub-info ">
+							<div class="app-sub-info-item">
+								<div class="app-info-label">开发者</div>
+								<div class="app-sub-info-context"><p id="artist">-</p></div>
+							</div>
+							<div class="app-sub-info-item">
+								<div class="app-info-label">用户平均评分</div>
+								<div class="app-sub-info-context"><p id="rating">-</p></div>
+							</div>
+							<div class="app-sub-info-item">
+								<div class="app-info-label">分类</div>
+								<div class="app-sub-info-context"><p id="genre">-</p></div>
+							</div>
+							<div class="app-sub-info-item">
+								<div class="app-info-label">App ID</div>
+								<div class="app-sub-info-context"><p id="trackId">-</p></div>
+							</div>
+							<div class="app-sub-info-item">
+								<div class="app-info-label">价格</div>
+								<div class="app-sub-info-context"><p id="price">-</p></div>
+							</div>
+							<div class="app-sub-info-item">
+								<div class="app-info-label">最新版本</div>
+								<div class="app-sub-info-context"><p id="currentVersion">-</p></div>
+							</div>
+							<div class="app-sub-info-item">
+								<div class="app-info-label">最新版本发布日期</div>
+								<div class="app-sub-info-context"><p id="currentVersionReleaseDate">-</p></div>
+							</div>
+							<div class="app-sub-info-item">
+								<div class="app-info-label">地区</div>
+								<div class="app-sub-info-context"><p>中国</p></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<include file="Public/footer"/>
+</div>	
+
+
+
+
+<script src="__PJ__/home/js/echarts.min.js"></script>
+<script src="__PJ__/home/js/pinying.jq.js"></script>
+<script src="__PJ__/home/js/loadScript.js"></script>
+<script src="__PJ__/home/js/sjk/cpyDataModule/stockModule.js"></script>
+<script src="__PJ__/home/js/sjk/cpyDataModule/cbModule.js"></script>
+<script src="__PJ__/home/js/sjk/cpyDataModule/echartsModule.js"></script>
+<script src="__PJ__/home/js/sjk/cpyDataModule/tabsModule.js"></script>
+<script src="__PJ__/home/js/sjk/cpyDataModule/pjModule.js"></script>
+<script src="__PJ__/home/js/sjk/cpyDataModule/trzModule.js"></script>
+<script src="__PJ__/home/js/sjk/rating.js"></script>
+<script src="__PJ__/home/js/sjk/cpyConfig.js"></script>
+<script src="__PJ__/home/js/sjk/cpyDataSjk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>“电数宝”会员登录 </title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+    <link href="__PJ__/home/css/dsb.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dsb-login-container">
+        <div class="dsb-login-box active" id="loginBox">
+            <div class="dsb-title">网经社“电数宝”</div>
+            <div class="login-tabs">
+                <!-- <div class="login-tabs-item active">密码登录</div>
+                <div class="login-tabs-item">短信登录</div> -->
+            </div>
+            <!-- 密码登录 -->
+            <form method="POST" id="dsbLogin1" class="dsb-login-form active" action="{:U('loginhandle')}" >
+                <div class="form-row">
+                    <input type="text" class="form-row-input must" name="login_mobile" id="phone" placeholder="手机号" autocomplete="off">
+                    <span class="dsb-msg">请输入11位正确的手机号</span>
+                </div>
+                <div class="form-row">
+                    <input type="password" class="form-row-input must" name="login_password" id="password" placeholder="密码" autocomplete="off">
+                        <span class="dsb-msg">输入至少8位密码</span>
+                </div>
+                <div class="form-row">
+                    <div class="dsb-submit-btn">登录</div>
+                </div>
+                <div class="form-row">
+                    <a href="/Index/dsb-reg.html">我要注册</a>
+                    <a href="javascript:;" id="forgetPw">忘记密码？点击找回</a>
+                </div>
+            </form>
+            <!-- 短信登录 -->
+            <!-- <form method="POST" id="dsbLogin2" class="dsb-login-form" action="" >
+                <div class="form-row">
+                    <input type="text" class="form-row-input must" name="phone" id="phone" placeholder="手机号" autocomplete="off">
+                    <span class="dsb-msg">请输入11位正确的手机号</span>
+                </div>
+                <div class="form-row">
+                    <div class="form-item">
+                        <input type="text" class="form-row-input must" name="code" id="code" placeholder="验证码" autocomplete="off">
+                        <span class="dsb-msg">6位验证码</span>
+                    </div>
+                    <div class="form-item">
+                        <div class="get-code-btn" id="getCode">获取验证码</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="dsb-submit-btn">登录</div>
+                </div>
+                <div class="form-row">
+                    <a href="/Index/dsb-reg.html">我要注册</a>
+                </div>
+            </form> -->
+            <!-- <p style="color: #ccc">登录即代表同意<a href="javascript:;" style="color: #6DB2F5" target="_blank">网经社“电数宝”会员协议</a></p> -->
+        </div>
+
+        <div class="dsb-login-box" id="forgetBox">
+            <div class="dsb-title">密码找回</div>
+            
+            <!-- 密码找回 -->
+            <form method="POST" id="dsbForgetPw" class="dsb-forget-form" action="{:U('forget')}" >
+                <div class="form-row">
+                    <input type="text" class="form-row-input must" name="forget_mobile" id="phone" placeholder="手机号" autocomplete="off">
+                    <span class="dsb-msg">请输入11位正确的手机号</span>
+                </div>
+                <div class="form-row">
+                    <div class="dsb-submit-btn">找回密码</div>
+                </div>
+                <div class="form-row">
+                    <a href="javascript:;" id="returnLogin">返回登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="dsb-footer">
+        <p>网经社 版权所有</p>
+    </div>
+<script src="__PJ__/home/js/jquery.min.js"></script>
+<script src="__PJ__/home/js/user/dsbLogin.js"></script>
+</body>
+</html>

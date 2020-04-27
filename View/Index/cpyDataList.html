@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司数据列表 </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<link href="__PJ__/home/css/100ec_style.css" rel="stylesheet">
+	<link href="__PJ__/home/css/dataStyle.css" rel="stylesheet">
+	<link href="__PJ__/home/css/cpyData.css" rel="stylesheet">
+	<script src="__PJ__/home/js/jquery.min.js"></script>
+	<style>
+		body {
+			background: #0B0F1B;
+		}
+	</style>
+</head>
+<body>
+	
+<div class="dsb-header">
+    <include file="Public/head-nav"/>
+</div>
+<include file="Public/dsb-left-nav"/>
+
+
+<div class="dsj-wrapper">
+
+	<div class="sjk-wrapper sjk-bg4">
+        <div class="tool-group">
+            <div class="position"><p>当前位置：<span id="position">公司列表</span></p></div>
+            <div class="search-box">
+				<input type="text" name="name" id="name" placeholder="公司名" autocomplete="off">
+				<span id="searchBtn">搜索</span>
+			</div>
+		</div>
+	</div>
+	<div class="sjk-bg4">
+		<div class="sjk-wrapper" id="menu" style="padding: 5px 0">
+			<div class="search-type">
+				<div class="search-type-label"><p>公司类型</p></div>
+				<ul class="search-type-list" id="mainType">
+					<li data-name='全部'>全部</li>
+					<li data-name='上市' >上市</li>
+					<li data-name='独角兽' >独角兽</li>
+					<li data-name='千里马' >千里马</li>
+					<li data-name='新三板' >新三板</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="sjk-wrapper">
+
+		<div class="data-module">
+			<div class="data-module-item active cb" id="list">
+			</div>
+		</div>
+
+	</div>
+
+
+	<include file="Public/footer"/>
+
+
+</div>
+<script src="__PJ__/home/js/sjk/cpyConfig.js?v1.5"></script>
+<script>
+	var arr = [];
+	for(var key in companyConfig) {
+		var cgy = companyConfig[key]['category']
+		arr.push({
+			name: key,
+			cgy: cgy,
+			type: companyConfig[key]['type']
+		})
+	}
+	$('#mainType').on('click', 'li', function() {
+		$(this).addClass('active').siblings().removeClass('active')
+		var data = renderData($(this).data('name'))
+		renderList(data)
+		$('#name').val('')
+	})
+	
+	function renderList(data, s) {
+		$('#list').empty()
+		if(s) {
+			$('#list').append('<p class="s-result">搜索结果</p>')
+		}
+		if(data.length == 0 || data == null) {
+
+			$('#list').append('<p class="s-result">未在“公司数据库”中检索到相关公司结果。建议您跳转“<a href="http://www.100ec.cn/User/investData.html" target="_blank" >电商投融资数据库</a>”、“<a href="http://www.100ec.cn/Index/complaintData.html" target="_blank" >电商评级数据库</a>”、“<a href="http://www.100ec.cn/User/appStoreSearch.html" target="_blank" >AppStore数据库</a>”进行检索。</p>')
+		}
+		var cgy = []
+		data.forEach(function(ele){
+			if(cgy.indexOf(ele['cgy']) == -1 ) {
+				cgy.push(ele['cgy'])
+			}
+		})
+		cgy.forEach(function(ele, index) {
+			var d = data.filter(function(item){
+				return item['cgy'] == ele
+			})
+			var oItem = $('<div class="item-bg"></div>')
+			var title = $('<div class="item-title cpyList">' + ele + '（' + d.length + '）</div>')
+			var oUl = $('<ul class="cb-url-tables"></ul>')
+			d.forEach(function(item) {
+				oUl.append('<li><a href="/Home/User/companyData.html?name=' + item['name'] + '" target="_blank">' + item['name'] + '</li>')
+			})
+			oItem.append(title)
+			oItem.append(oUl)
+			$('#list').append(oItem)
+
+		})
+
+	}
+	function renderData(type) {
+		var data = arr
+		if(!type || type == '全部') {
+			return data
+		}
+		data = data.filter(function(ele) {
+			return type == ele['type']
+		})
+		return data
+	}
+	function getURLString (name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	    var r = window.location.search.substr(1).match(reg); 
+	    if (r != null) return decodeURIComponent(r[2]); 
+	    return null; 
+	}
+	var urlType = getURLString('type') || '全部';
+	$('#mainType li').each(function(index, ele) {
+		if($(this).html() == urlType) {
+			$(this).trigger('click')
+		}
+		var name = $(this).html()
+		if(name != '全部') {
+			var num = arr.filter(function(item){
+				return item.type == name
+			}).length
+		}else {
+			var num = arr.length
+		}
+		$(this).html(name + '(' + num + ')')
+	})
+	$('#searchBtn').on('click', function() {
+		var val = $('#name').val()
+		if(!val ) return
+		var data = arr.filter(function(ele){
+			return ele.name.indexOf(val) != -1
+		})
+		$('#mainType li').removeClass('active')
+		renderList(data, true)
+
+	})
+	$('#name').on('keypress', function(e){
+		if(e.which === 13 && $(this).val()) {
+			$('#searchBtn').trigger('click')
+		}
+	})
+	var kw = getURLString('kw');
+	if(kw) {
+		$('#name').val(kw);
+		$('#searchBtn').trigger('click')
+	}
+</script>
+</body>
+</html>
